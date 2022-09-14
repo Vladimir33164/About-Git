@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<!-- saved from url=(0062)https://projectpulse.ru/blog/all/29-should-know-git-operations -->
+<html lang="ru" data-lt-installed="true"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Required meta tags -->
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="./29 полезных операций с Git _ Блог _ projectpulse.ru_files/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+
+    
+        <title>29 полезных операций с Git / Блог / projectpulse.ru</title>
+    
+
+    
+        <meta name="description" content="Несколько важных наборов команд с параметрами и флагами в git о которых полезно знать.">
+    
+
+    <link rel="preconnect" href="https://fonts.gstatic.com/">
+    <link href="./29 полезных операций с Git _ Блог _ projectpulse.ru_files/css2" rel="stylesheet">
+    <link rel="stylesheet" href="./29 полезных операций с Git _ Блог _ projectpulse.ru_files/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <style>
+        body {
+            font-family: 'Roboto Mono', sans-serif;
+            font-size: 15px;
+        }
+
+        html, body {
+            min-height: 100vh
+        }
+
+        footer {
+            font-size: 0.75rem;
+        }
+
+        footer a {
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        .footer__icon-container {
+            display: block;
+            text-align: center;
+            width: 30px;
+        }
+    </style>
+    <meta name="google-site-verification" content="xmSlYwuYZJNZOjnTGtRJwveTB8OpjVEVPzhR84Pjh1Q">
+    <meta name="yandex-verification" content="173fffed9e5f923e">
+    
+    <link href="./29 полезных операций с Git _ Блог _ projectpulse.ru_files/css2(1)" rel="stylesheet">
+    <meta property="og:title" content="29 полезных операций с Git">
+    <meta property="og:type" content="article">
+    <meta property="og:image" content="https://309716.selcdn.ru/st/blog/20211203_29-useful-git-operations-pt1/cover.jpg">
+    <meta property="og:description" content="Несколько важных наборов команд с параметрами и флагами в git о которых полезно знать.">
+    <meta property="og:site_name" content="Блог о разработке и кодинге">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://309716.selcdn.ru/st/blog/20211203_29-useful-git-operations-pt1/cover.jpg">
+    <style>
+
+        .blog-entry-content {
+            font-size: 1.1rem;
+            line-height: 1.85rem;
+        }
+
+        .blog-entry-content p,
+        .blog-entry-content li {
+            font-family: 'Roboto Slab', serif;
+        }
+
+        .blog-entry-content img {
+            display: block;
+            margin: 0 auto;
+            max-width: 100%;
+        }
+
+        .blog-entry-content pre {
+            font-size: 0.8rem;
+            line-height: 1.2rem;
+            font-family: 'Roboto Mono', monospace;
+        }
+
+        h1 {
+
+        }
+
+        h2, h3 {
+
+            font-weight: bold;
+            margin: 3rem 0 1.2rem 0;
+        }
+
+    </style>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script type="text/javascript" async="" src="./29 полезных операций с Git _ Блог _ projectpulse.ru_files/analytics.js.Без названия"></script><script async="" src="./29 полезных операций с Git _ Блог _ projectpulse.ru_files/js"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'UA-135346883-1');
+    </script>
+</head>
+<body class="d-flex flex-column h-100">
+<nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+    <div class="container">
+        <div class="col-12 col-xl-8 d-flex flex-column flex-md-row align-items-center">
+            <a class="navbar-brand me-0" href="https://projectpulse.ru/">projectpulse.ru</a>
+            <div class="flex-fill">
+                <div class="nav nav-fill flex-column flex-md-row">
+                    <a class="nav-link text-secondary py-1 px-0" href="https://projectpulse.ru/monitoring/">Мониторинг</a>
+                    
+                    <a class="nav-link text-secondary py-1 px-0" href="https://learn.projectpulse.ru/">Уроки по программированию</a>
+                    <a class="nav-link text-secondary py-1 px-0" href="https://projectpulse.ru/blog/all/">Блог</a>
+                    <a class="nav-link text-secondary py-1 px-0" target="_blank" href="https://my.projectpulse.ru/">Личный
+                        кабинет</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+<div class="flex-fill">
+    
+    <div class="container py-3">
+        <div class="row blog-content">
+            <div class="col-12 col-xl-8">
+                <a href="https://projectpulse.ru/blog/all/" class="py-2">
+                    <small>
+                        <i class="fas fa-arrow-left"></i> Вернуться к списку
+                    </small>
+                </a>
+                <div itemscope="" itemtype="http://schema.org/Article">
+                    <meta itemprop="datePublished" content="2021-12-03">
+                    <meta itemprop="image" content="https://309716.selcdn.ru/st/blog/20211203_29-useful-git-operations-pt1/cover.jpg">
+                    <meta itemprop="description" content="Несколько важных наборов команд с параметрами и флагами в git о которых полезно знать.">
+                    <h1 class="font-weight-bold" itemprop="headline">29 полезных операций с Git</h1>
+                    <small>
+                        <time itemprop="datePublished" datetime="2021-12-03">03.12.2021</time>
+                    </small>
+                    <div class="blog-entry-content mt-4" itemprop="articleBody"><p><img alt="" src="./29 полезных операций с Git _ Блог _ projectpulse.ru_files/cover.jpg"></p>
+<h2>1. Настройка имени пользователя и электронной почты</h2>
+<p>Имя пользователя треубется для связи коммитов с вашим именем. И да, это совсем не то же самое что имя аккаунта на Github. Установить имя пользователя можно следующей командой:</p>
+<pre class="border rounded  bg-light p-2">git config --global user.name "developer"
+</pre>
+<p>Аналогичным способом можно указать адрес электронной почты, который будет сопровождать все ваши будущие коммиты:</p>
+<pre class="border rounded  bg-light p-2">git config --global user.email "dev@projectpulse.ru"
+</pre>
+<h2>2. Кеширование данных для авторизации</h2>
+<p>При использовании авторизации по логину и паролю в работе с удалённым репозиторием можно закешировать авторизационные данные, чтобы не вводить их каждый раз снова:</p>
+<pre class="border rounded  bg-light p-2">git config --global credential.helper cache
+</pre>
+<h2>3. Инициализация репозитория</h2>
+<p>Создать новый репозиторий или переинициализировать существующий можно с помощью параметра <code>init</code>. Такая операция создаёт специальную скрытую директорию содержащую всё необходимое для существования репозитория:</p>
+<pre class="border rounded  bg-light p-2">git init
+</pre>
+<h2>4. Добавление файлов к коммиту: всех или по одному</h2>
+<p>Для добавления одного файла к коммиту:</p>
+<pre class="border rounded  bg-light p-2">git add somefile.js
+</pre>
+<p>Если вместо имени файла указать просто точку <code>.</code>, то рекурсивно будут добавлены все файлы в текущей и вложенных директориях:</p>
+<pre class="border rounded  bg-light p-2">git add .
+</pre>
+<h2>5. Статус репозитория</h2>
+<p>Посмотреть текущее состояние репозитория можно с помощью параметра <code>status</code>. Команда выводит список добавленных и не добавленных к коммиту файлов, а также ещё неотслеживаемые файлы.</p>
+<pre class="border rounded  bg-light p-2">git status
+</pre>
+<h2>6. Создание коммита</h2>
+<p>Создать коммит с однострочным сообщением можно с помощью аргумента <code>-m</code> команды <code>commit</code>:</p>
+<pre class="border rounded  bg-light p-2">git commit -m "Repository initialization"
+</pre>
+<p>Если же просто вызвать команду <code>git commit</code> без аргументов, то будет предложено открыть текстовый редактор для ввода сообщения коммита.</p>
+<h2>7.  Просмотр истории коммитов с изменениями</h2>
+<p>Параметр <code>log</code> выведет список последних коммитов репозитория. Добавив аргумент <code>-p</code> можно также смотреть изменения сделанные каждым коммитом:</p>
+<pre class="border rounded  bg-light p-2">git log -p
+</pre>
+<h2>8. Просмотр одного коммита</h2>
+<p>Детальную информацию по отдельному коммиту можно посмотреть параметром <code>show</code>. Аргументом для команды должен быть передан хеш коммита, но копировать весь хеш целиком не обязательно: можно обойтись первыми шестью символами:</p>
+<pre class="border rounded  bg-light p-2">git show fa21ee9
+</pre>
+<h2>9. Просмотр изменений перед созданием коммита</h2>
+<p>Посмотреть все изменения в репозитории которые ещё не были добавлены к коммиту можно с помощью команды</p>
+<pre class="border rounded  bg-light p-2">git diff
+</pre>
+<p>Если требуется просмотреть изменения которые были добавлены к коммиту перед его созданием:</p>
+<pre class="border rounded  bg-light p-2">git diff --staged
+</pre>
+<p>Также командой можно смотреть изменения отдельного файла:</p>
+<pre class="border rounded  bg-light p-2">git diff index.php
+</pre>
+<h2>10. Удаление файла из репозитория</h2>
+<p>Удалить файл из репозитория и отключить его дальнейшее отслеживание можно параметром <code>rm</code>:</p>
+<pre class="border rounded  bg-light p-2">git rm code/index.php
+</pre>
+<h2>11. Переименовывание и перемещение файлов</h2>
+<p>Переименовать файл или директорию можно параметром <code>mv</code>:</p>
+<pre class="border rounded  bg-light p-2">git mv etc/view.php newdir
+</pre>
+<h2>12. Откат изменений файлов</h2>
+<p>Для отмены изменений которые ещё не были добавлены к коммиту:</p>
+<pre class="border rounded  bg-light p-2">git checkout sometest.txt
+</pre>
+<p>Если вызвать команду без указания конкретного файла или директории, то будут отменены все изменения в файлах к состоянию последнего коммита.</p>
+<pre class="border rounded  bg-light p-2">git checkout
+</pre>
+<p>Если файл уже был добавлен к коммиту, то для отмены понадобится параметр <code>reset</code>:</p>
+<pre class="border rounded  bg-light p-2">git reset HEAD sometest.txt
+</pre>
+<p>Так же команду можно использовать без указания файлов, для отмены все добавленных к коммиту файлов.</p>
+<h2>13. Исправление последнего коммита</h2>
+<p>Аргумент <code>--amend</code> параметра <code>commit</code> позволяет исправлять ошибки последнего коммита, путём автоматического создания нового исправленного коммита в истории. Пример исправления сообщения последнего коммита:</p>
+<pre class="border rounded  bg-light p-2">git commit --amend -m "Новое сообщение для последнего коммита"
+</pre>
+<p>Кроме изменения сообщения можно вносить изменения и в сами файлы, например если мы забыли добавить директорию к последнему коммиту:</p>
+<pre class="border rounded  bg-light p-2">git add forgotten_dir
+git commit --amend --no-edit
+</pre>
+<p>Флаг --no-edit используется когда не требуется вносить изменения в сообщение коммита.</p>
+<p><strong>Осторожно! Не исправляйте коммиты удалённых репозиториев</strong><br>
+<em>Инструмент отлично подходит для исправления коммитов, которые пока остаются в локальном репозитории. Но исправление коммитов которые уже были отправлены в удалённый общедоступный репозиторий может создать определённые проблемы без понимания логики работы.</em></p>
+<h2>14. Откат изменений коммита</h2>
+<p>Откатить изменения последнего коммита можно параметром <code>revert</code>. Так будет создан новый коммит, полностью обратный предыдущему, что позволит отменить изменения внесённые последний коммитом:</p>
+<pre class="border rounded  bg-light p-2">git revert HEAD
+</pre>
+<p>Таким образом можно создать обратный коммит не только последнему, но и любому из истории, указав хеш нужного коммита:</p>
+<pre class="border rounded  bg-light p-2">git revert fa21ee9
+</pre>
+<h2>15. Создание и переключение к новой ветке</h2>
+<p>Создать новую ветку легко:</p>
+<pre class="border rounded  bg-light p-2">git branch new-feature
+</pre>
+<p>После создания новой ветки, переключиться на неё можно командой:</p>
+<pre class="border rounded  bg-light p-2">git checkout -b new-feature
+</pre>
+<h2>16. Список веток репозитория</h2>
+<p>Посмотреть список веток можно командой:</p>
+<pre class="border rounded  bg-light p-2">git branch
+</pre>
+<p>Также можно посмотреть все ветки удалённого репозитория:</p>
+<pre class="border rounded  bg-light p-2">git branch -a
+</pre>
+<h2>17. Удаление ветки</h2>
+<p>После того как работа с веткой завершена и она слита с другой основной веткой, её можно удалить:</p>
+<pre class="border rounded  bg-light p-2">git branch -d new-feature
+</pre>
+<p>При попытке удалить ветку, которая ещё не была слита с другой, будет возвращена ошибка. В этом случае для принудительного удаления:</p>
+<pre class="border rounded  bg-light p-2">git branch -D new-feature
+</pre>
+<p>Этими командами  мы удаляем ветки только в локальном репозитории. Если же требуется удалить ветку в удалённом репозитории:</p>
+<pre class="border rounded  bg-light p-2">git push origin --delete new-feature
+</pre>
+<h2>18. Слияние двух веток</h2>
+<p>Для операций слияния используется параметр <code>merge</code>:</p>
+<pre class="border rounded  bg-light p-2">git merge new-feature
+</pre>
+<p>Данная команда запустит процесс слияния другой указанной ветки в текущую.</p>
+<p>Если требуется сделать слияние путём создания нового коммита, потребуется указать флаг <code>--no-ff</code>:</p>
+<pre class="border rounded  bg-light p-2">git merge --no-ff new-feature
+</pre>
+<h2>19. Просмотри истории коммитов в виде графа</h2>
+<p>Параметр <code>log</code> позволяет вывести историю коммитов в виде графа:</p>
+<pre class="border rounded  bg-light p-2">git log --graph --oneline --decorate
+</pre>
+<p>Где флаг <code>--graph</code> используется для рисования истории ASCII-символами, а дополнительные флаги <code>--oneline</code> и <code>--decorate</code> просто для удобства просмотра истории.</p>
+<p>Для просмотра истории коммитов не только текущей ветки, а всех, есть ещё один дополнительный флаг <code>--all</code>:</p>
+<pre class="border rounded  bg-light p-2">git log --all --graph --oneline --decorate
+</pre>
+<h2>20. Отмена конфликтного слияния</h2>
+<p>При возникновении конфликта в процессе слияния можно воспользоваться флагом <code>--abort</code> вместе с вызовом параметра <code>merge</code>:</p>
+<pre class="border rounded  bg-light p-2">git merge --abort
+</pre>
+<p>Данная команда завершит остановленный процесс слияния путём отмены всех изменений и возвращением к состоянию перед запуском команды <code>git merge</code>.</p>
+<p>Также можно воспользоваться командой <code>git reset</code> которая просто отменит все изменения файлов к последнему стабильному состоянию.</p>
+<h2>21. Добавление удалённого репозитория</h2>
+<p>Для добавления удалённого репозитория используется параметр <code>remote add</code> с указанием имени удалённого репозитория и его URL:</p>
+<pre class="border rounded  bg-light p-2">git remote add origin https://github.com/somerep
+</pre>
+<h2>22. Просмотр адресов удалённых репозиториев</h2>
+<p>Посмотреть все удалённые репозитории можно командой </p>
+<pre class="border rounded  bg-light p-2">git remove -v
+</pre>
+<p>Сам список репозитеориев с адресами содержится в файле <code>.git/config</code>.</p>
+<h2>23. Получение дополнительной информации об удалённом репозитории</h2>
+<p>Получить информацию об удалённом репозитории можно параметром <code>remote show</code> и именем репозитория, например <code>origin</code>.</p>
+<pre class="border rounded  bg-light p-2">git remote show origin
+</pre>
+<h2>24. Отправка изменений на удалённый репозиторий</h2>
+<p>Для отправки изменений на удалённый репозиторий используется параметр <code>push</code> с именем репозитория и ветки:</p>
+<pre class="border rounded  bg-light p-2">git push origin master
+</pre>
+<h2>25. Загрузка изменений с удалённого репозитрия</h2>
+<p>Параметр <code>pull</code> загружает изменения с удалённого репозитория и сразу делает слияние изменений с локальным репозиторием:</p>
+<pre class="border rounded  bg-light p-2">git pull
+</pre>
+<p>Для получения дополнительной ифнормации о процессе пригодится флаг <code>--verbose</code>:</p>
+<pre class="border rounded  bg-light p-2">git pull --verbose
+</pre>
+<h2>26. Слияние удалённого репозитория с локальным</h2>
+<p>Кроме веток, есть возможность слияния репозитория целиком:</p>
+<pre class="border rounded  bg-light p-2">git merge origin
+</pre>
+<h2>27. Отправка новой ветки на удалённый репозиторий</h2>
+<p>Для отправки свежесозданной ветки на удалённый репозиторий, необходимо вызвать параметр <code>push</code> с флагом <code>-u</code>:</p>
+<pre class="border rounded  bg-light p-2">git push -u origin new-feature
+</pre>
+<h2>29. Удаление ветки на удалённом репозитории</h2>
+<p>Для удаления же ветки понадобится флаг <code>--delete</code>:</p>
+<pre class="border rounded  bg-light p-2">git push --delete origin new-feature
+</pre></div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+</div>
+<footer class="bg-dark text-light">
+    <div class="container py-3">
+        <div class="row">
+            <div class="col-12 col-xl-8">
+                <div class="row">
+                    <div class="col-12 col-lg-4 mb-3 mb-lg-0">
+                        <h6 class="">Навигация</h6>
+                        <div class="d-flex flex-column">
+                            <a href="https://projectpulse.ru/">Главная</a>
+                            <a href="https://projectpulse.ru/monitoring/">Инструкция по мониторингу</a>
+                            <a href="https://projectpulse.ru/load-testing/">Нагрузочное тестирование</a>
+                            <a href="https://projectpulse.ru/blog/all/">Блог и новости</a>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-5 d-flex flex-column mb-3 mb-lg-0">
+                        <h6>Мы в социальных сетях</h6>
+                        <div class="flex-fill d-flex flex-column justify-content-center">
+                            <div class="d-flex flex-column">
+                                <a class="mb-1 d-flex align-items-center" target="_blank" href="https://t.me/projectpulse">
+                                    <div class="footer__icon-container">
+                                        <i class="fab fa-telegram-plane fs-5 me-2"></i>
+                                    </div>
+                                    Обновления блога
+                                </a>
+                                <a class="mb-1 d-flex align-items-center" target="_blank" href="https://instagram.com/projectpulse.ru/">
+                                    <div class="footer__icon-container">
+                                        <i class="fab fa-instagram fs-5 me-2"></i>
+                                    </div>
+                                    Полезные карточки
+                                </a>
+                                <a class="mb-1 d-flex align-items-center" target="_blank" href="https://vk.com/projectpulse_ru">
+                                    <div class="footer__icon-container">
+                                        <i class="fab fa-vk fs-5 me-2"></i>
+                                    </div>
+                                    Обратная связь
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-3 d-flex flex-column align-self-lg-center align-items-lg-center">
+                        <a target="_blank" href="https://073463536e3a41c0be96875d5038cbd1.projectpulse.ru/" class="d-flex align-items-center mb-2">
+                            <span class="badge bg-success me-2">&nbsp;</span>
+                            <span>Статус системы</span>
+                        </a>
+                        <div>2019-2021 © <a href="https://projectpulse.ru/">projectpulse.ru</a></div>
+                        <div>
+                            <a href="mailto:contact@projectpulse.ru">contact@projectpulse.ru</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+</body></html>

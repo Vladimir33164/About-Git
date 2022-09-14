@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<!-- saved from url=(0054)https://projectpulse.ru/blog/all/git-for-beginners-pt1 -->
+<html lang="ru" data-lt-installed="true"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Required meta tags -->
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="./Введение в git для новичков _ Блог _ projectpulse.ru_files/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+
+    
+        <title>Введение в git для новичков / Блог / projectpulse.ru</title>
+    
+
+    
+        <meta name="description" content="Серия статей о системе контроля версий Git. Первая обзорная с примерами создания локального репозитория и первого коммита.">
+    
+
+    <link rel="preconnect" href="https://fonts.gstatic.com/">
+    <link href="./Введение в git для новичков _ Блог _ projectpulse.ru_files/css2" rel="stylesheet">
+    <link rel="stylesheet" href="./Введение в git для новичков _ Блог _ projectpulse.ru_files/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <style>
+        body {
+            font-family: 'Roboto Mono', sans-serif;
+            font-size: 15px;
+        }
+
+        html, body {
+            min-height: 100vh
+        }
+
+        footer {
+            font-size: 0.75rem;
+        }
+
+        footer a {
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        .footer__icon-container {
+            display: block;
+            text-align: center;
+            width: 30px;
+        }
+    </style>
+    <meta name="google-site-verification" content="xmSlYwuYZJNZOjnTGtRJwveTB8OpjVEVPzhR84Pjh1Q">
+    <meta name="yandex-verification" content="173fffed9e5f923e">
+    
+    <link href="./Введение в git для новичков _ Блог _ projectpulse.ru_files/css2(1)" rel="stylesheet">
+    <meta property="og:title" content="Введение в git для новичков">
+    <meta property="og:type" content="article">
+    <meta property="og:image" content="https://309716.selcdn.ru/st/blog/git-for-beginners-pt1/cover.jpg">
+    <meta property="og:description" content="Серия статей о системе контроля версий Git. Первая обзорная с примерами создания локального репозитория и первого коммита.">
+    <meta property="og:site_name" content="Блог о разработке и кодинге">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://309716.selcdn.ru/st/blog/git-for-beginners-pt1/cover.jpg">
+    <style>
+
+        .blog-entry-content {
+            font-size: 1.1rem;
+            line-height: 1.85rem;
+        }
+
+        .blog-entry-content p,
+        .blog-entry-content li {
+            font-family: 'Roboto Slab', serif;
+        }
+
+        .blog-entry-content img {
+            display: block;
+            margin: 0 auto;
+            max-width: 100%;
+        }
+
+        .blog-entry-content pre {
+            font-size: 0.8rem;
+            line-height: 1.2rem;
+            font-family: 'Roboto Mono', monospace;
+        }
+
+        h1 {
+
+        }
+
+        h2, h3 {
+
+            font-weight: bold;
+            margin: 3rem 0 1.2rem 0;
+        }
+
+    </style>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script type="text/javascript" async="" src="./Введение в git для новичков _ Блог _ projectpulse.ru_files/analytics.js.Без названия"></script><script async="" src="./Введение в git для новичков _ Блог _ projectpulse.ru_files/js"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'UA-135346883-1');
+    </script>
+</head>
+<body class="d-flex flex-column h-100">
+<nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+    <div class="container">
+        <div class="col-12 col-xl-8 d-flex flex-column flex-md-row align-items-center">
+            <a class="navbar-brand me-0" href="https://projectpulse.ru/">projectpulse.ru</a>
+            <div class="flex-fill">
+                <div class="nav nav-fill flex-column flex-md-row">
+                    <a class="nav-link text-secondary py-1 px-0" href="https://projectpulse.ru/monitoring/">Мониторинг</a>
+                    
+                    <a class="nav-link text-secondary py-1 px-0" href="https://learn.projectpulse.ru/">Уроки по программированию</a>
+                    <a class="nav-link text-secondary py-1 px-0" href="https://projectpulse.ru/blog/all/">Блог</a>
+                    <a class="nav-link text-secondary py-1 px-0" target="_blank" href="https://my.projectpulse.ru/">Личный
+                        кабинет</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+<div class="flex-fill">
+    
+    <div class="container py-3">
+        <div class="row blog-content">
+            <div class="col-12 col-xl-8">
+                <a href="https://projectpulse.ru/blog/all/" class="py-2">
+                    <small>
+                        <i class="fas fa-arrow-left"></i> Вернуться к списку
+                    </small>
+                </a>
+                <div itemscope="" itemtype="http://schema.org/Article">
+                    <meta itemprop="datePublished" content="2019-07-17">
+                    <meta itemprop="image" content="https://309716.selcdn.ru/st/blog/git-for-beginners-pt1/cover.jpg">
+                    <meta itemprop="description" content="Серия статей о системе контроля версий Git. Первая обзорная с примерами создания локального репозитория и первого коммита.">
+                    <h1 class="font-weight-bold" itemprop="headline">Введение в git для новичков</h1>
+                    <small>
+                        <time itemprop="datePublished" datetime="2019-07-17">17.07.2019</time>
+                    </small>
+                    <div class="blog-entry-content mt-4" itemprop="articleBody"><p>Одно из главных препятствий, с которым сталкивается  начинающий разработчик программного обеспечения – отсутствие информации для новичков. Об инструментах или технологиях, которые необходимо освоить неопытному программисту, редко пишут понятным языком. Даже если тема очень простая, необходимо прочитать несколько статей, чтобы получить о ней полное представление.</p>
+<p>Если такой подход усложняет ваше обучение и работу, у нас есть решение. В этой статье мы поделимся своим опытом и расскажем про git. Это великолепная система, которую нетрудно освоить и добиться значительных результатов в программировании. Если вы до сих пор пишете базовые сайты HTML / CSS с помощью простого текстового редактора, отложите это дело в сторону. Пара минут чтения об инструменте, которым пользуются ведущие разработчики, позволят выйти на новый уровень создания веб-проектов.</p>
+<p><img alt="" src="./Введение в git для новичков _ Блог _ projectpulse.ru_files/cover.jpg"></p>
+<h2>Что такое git, и зачем это нужно?</h2>
+<p>Если в общем, то это одна из множества разных систем контроля версий (VCS), но что это значит? Из официальной документации git-scm.com:</p>
+<p><strong>Система контроля версий</strong> — это <strong>система</strong>, записывающая изменения одного или множества файлов в течение времени и позволяющая вернуться позже к определённой <strong>версии</strong>.</p>
+<p>Ок, а если совсем просто, то git — это прокаченная кнопка «Сохранить». Сохранение в git зовётся коммит (commit). Когда мы делаем коммит, мы создаём копию (на самом деле не совсем, но об этом позже) состояния всех файлов в рабочей директории — git репозитории.</p>
+<p>Git можно использовать для сохранения состояния файлов любого типа, не обязательно только для разработки ПО. Но именно в этом случае, в процессе работы необходимо постоянно вносить изменения в большое количество разных файлов, и git в данном случае мощный инструмент для просмотра изменений, дающий возможность откатывать изменения в случае ошибок, или совмещать изменения нескольких разработчиков.</p>
+<h2>Почему я должен использовать git?</h2>
+<p><strong>Если вкратце:</strong></p>
+<ul>
+<li>Это крутая кнопка сохранения которая делает копию состояния вашего проекта на определенный момент времени</li>
+<li>Это инструмент который помогает работать над разными версиями вашего проекта одновременно. Например, создавайте новое меню вашего сайта в одной ветке, вносите мелкие правки шаблона в другой и совмещайте всё это по мере готовности</li>
+<li>Это потрясающая система для взаимодействия нескольких людей в рамках проекта</li>
+</ul>
+<p>Итак, рассмотрим подробнее почему следует использовать git, когда есть такие сервисы как Google Drive, Яндекс.Диск или Dropbox для сохранения резервной копии, а версии вообще можно делать как ctrl+c и ctrl+v?</p>
+<p>Возьмём для примера несколько сценариев.</p>
+<p>Предположим мы только начали разработку вашего нового сайта (пусть это будет портфолио работ). У нас есть набор CSS-файлов, которые мы начинаем править чтобы закончить работы над расположением меню. Что-то делаем, делаем идём смотреть результат и видим что получилось не то, что ожидали: меню съехало в пикселях, исправить не проблема, но хуже что заголовок страницы пропал, совсем.</p>
+<p>Ctrl+C, Ctrl+Z - отменяем наши правки по меню, смотрим результат: заголовка по прежнему нет. Что-то сломало общий шаблон страницы, но что и где именно мы не знаем. Возможно где-то пропустили точку с запятой, случайно удалили строчку или ещё что-то сходу не очевидное.</p>
+<p>Работа с использованием git обычно строится так, что мы делаем <code>git commit</code> (сохраняем состояние) на каждом логически законченном этапе. В данном случае у нас было бы состояние перед тем как мы начали наши правки по меню, то самое состояние в котором заголовок ещё на месте. Мы могли бы просто вернуться к этому состоянию, и начать правки заново, либо могли бы наглядно посмотреть что именно изменилось в проекте с последнего сохранённого состояния.</p>
+<p>Выше простой пример персонального сайта на базовых HTML и CSS. Представьте что у вас большой комплексный проект, с реальными пользователями в онлайне, и при обновлении бекэнда перестал работать модуль оплат. Критически важно до решения проблемы в короткие сроки вернуться к работоспособной версии. В этом случае git незаменимый инструмент на этапе разработки.</p>
+<h2>Как мне начать использовать git?</h2>
+<p>Для начала нужно иметь базовые навыки работы с командной строкой (терминалом) - ещё одним важным инструментом в руках разработчика. В рамках данного материала не нужно быть экспертом, но что это такое знать нужно.</p>
+<p><strong>Windows:</strong> самый простой способ для пользователей Windows это Git Bash https://gitforwindows.org/ - скачайте и установите перед тем как мы пойдём дальше.</p>
+<p>Самое лучшее это учиться на примерах, с чего мы и начнём. Откройте терминал (в Linux или Mac, или Git Bash в Windows). У большинства пользователей Mac и Linux git уже установлен и готов к работе, в чём можно убедиться набрав команду</p>
+<p><code>git --version</code></p>
+<p>Если git уже установлен в вашей системе, система сообщит в выводе об установленной версии:</p>
+<pre class="border rounded  bg-light p-2">git version 2.21.0
+</pre>
+<p>Если же нет, ничего страшного. Со способами установки в вашей системе можно ознакомиться по ссылке <a href="https://gist.github.com/derhuerst/1b15ff4652a867391f03">https://gist.github.com/derhuerst/1b15ff4652a867391f03</a></p>
+<p>И так, git установлен и готов к работе. Для примера будем использовать простой проект: статичный HTML сайт.<br>
+Как использовать git в моём проекте?<br>
+Возьмём для примера директорию website в которой лежит файл index.html и директории scripts и styles, с расположенными в них файлами main.js и style.css.<br>
+Первым делом необходимо проинициализировать новый git репозиторий в директории. Для этого перейдем в нужную директории и выполним соответствующую команду:</p>
+<p><code>cd website</code><br>
+<code>git init</code></p>
+<p>После успешного выполнения команды получаем подтверждение в создании репозитория:</p>
+<pre class="border rounded  bg-light p-2">Initialized empty Git repository in /home/projectpulse/dev/website/
+</pre>
+<p>также можно заметить что в проекте появилась новая директория <code>.git</code>. В дальнейшем если понадобится удалить репозиторий, достаточно будет удалить эту директорию.</p>
+<h2>Настройка имени и адреса электронной почты в git</h2>
+<p>Каждый коммит имеет своего автора, с записанными именем и адресом электронной почты. Авторов проекта можно посмотреть используя команду <code>git log</code>. Для настройки можно воспользоваться следующими двумя командами:</p>
+<p><code>git config --global user.name «Ваше имя»</code><br>
+<code>git config --global user.email your@examplemail.ru</code></p>
+<h2>Делаем первый коммит</h2>
+<p>Только что мы создали репозиторий и настроили имя с адресом электронной почты. Пришло время сделать наш первый коммит, который сохранит текущее состояние нашего проекта, и который будет являться начальной точкой нашего репозитория. Сделаем это следующими командами:</p>
+<p><code>git add .</code><br>
+<code>git commit -m "Initial commit - project start"</code></p>
+<p>Первой строкой мы добавили в коммит все файлы директории в коммит (а также добавили их к последующему контролю за изменениям). Второй строкой мы создали коммит с комментарием. Обычно комментарий отражает состояние проекта или сделанные изменения которые собраны в коммите. Совет: старайтесь писать комментарии кратко, но ёмко.</p>
+<p>С этого момента и далее, любые изменения в файлах директории будут записаны и сопоставлены с начальным состоянием. Чтобы проверить это, внесём изменения в какой-либо файл (например index.html) и запустим команду</p>
+<p><code>git status</code></p>
+<p>Вывод команды даёт нам понимание что произошло в проекте с момента последнего коммита</p>
+<pre class="border rounded  bg-light p-2">No commits yet
+Untracked files: (use "git add &lt;file&gt;..." to include in what will be committed)
+    index.html
+nothing added to commit but untracked files present (use "git add" to track)
+</pre>
+<p>Данный вывод говорит нам о том, что есть неучтённые изменения в одном файле index.html. Соберём новый коммит добавив в него изменения</p>
+<p><code>git add .</code></p>
+<p>Точкой мы просим добавить все изменения файлов в директории. Но чаще приходится добавлять изменения пофайлово или же отдельными директориями</p>
+<p><code>git add index.html</code><br>
+<code>git add styles/</code></p>
+<p>И наконец сохраним наши изменения создав новый коммит</p>
+<p><code>git commit -m "Modify index file to fix menu"</code></p>
+<p>На этом всё! Git имеет множество других полезных функций, особенно для совместной работы (ветвления, слияния) которые будут рассмотрены в следующих статьях. Подписывайтесь и следите за обновлениями :)</p>
+<p>Данный материал – перевод, оригинал которого можно прочитать по ссылке <a href="https://webtuu.com/blog/04/a-laymans-introduction-to-git">https://webtuu.com/blog/04/a-laymans-introduction-to-git</a></p></div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+</div>
+<footer class="bg-dark text-light">
+    <div class="container py-3">
+        <div class="row">
+            <div class="col-12 col-xl-8">
+                <div class="row">
+                    <div class="col-12 col-lg-4 mb-3 mb-lg-0">
+                        <h6 class="">Навигация</h6>
+                        <div class="d-flex flex-column">
+                            <a href="https://projectpulse.ru/">Главная</a>
+                            <a href="https://projectpulse.ru/monitoring/">Инструкция по мониторингу</a>
+                            <a href="https://projectpulse.ru/load-testing/">Нагрузочное тестирование</a>
+                            <a href="https://projectpulse.ru/blog/all/">Блог и новости</a>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-5 d-flex flex-column mb-3 mb-lg-0">
+                        <h6>Мы в социальных сетях</h6>
+                        <div class="flex-fill d-flex flex-column justify-content-center">
+                            <div class="d-flex flex-column">
+                                <a class="mb-1 d-flex align-items-center" target="_blank" href="https://t.me/projectpulse">
+                                    <div class="footer__icon-container">
+                                        <i class="fab fa-telegram-plane fs-5 me-2"></i>
+                                    </div>
+                                    Обновления блога
+                                </a>
+                                <a class="mb-1 d-flex align-items-center" target="_blank" href="https://instagram.com/projectpulse.ru/">
+                                    <div class="footer__icon-container">
+                                        <i class="fab fa-instagram fs-5 me-2"></i>
+                                    </div>
+                                    Полезные карточки
+                                </a>
+                                <a class="mb-1 d-flex align-items-center" target="_blank" href="https://vk.com/projectpulse_ru">
+                                    <div class="footer__icon-container">
+                                        <i class="fab fa-vk fs-5 me-2"></i>
+                                    </div>
+                                    Обратная связь
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-3 d-flex flex-column align-self-lg-center align-items-lg-center">
+                        <a target="_blank" href="https://073463536e3a41c0be96875d5038cbd1.projectpulse.ru/" class="d-flex align-items-center mb-2">
+                            <span class="badge bg-success me-2">&nbsp;</span>
+                            <span>Статус системы</span>
+                        </a>
+                        <div>2019-2021 © <a href="https://projectpulse.ru/">projectpulse.ru</a></div>
+                        <div>
+                            <a href="mailto:contact@projectpulse.ru">contact@projectpulse.ru</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+</body></html>
